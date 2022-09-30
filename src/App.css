@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.card-img-top {
+  width: auto;
+  height:45vh;
+  object-fit: cover;
+}
+.shopcart{
+  color:white;
+  height:3rem;
+  width:1.5em;
+}
+.btn1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
