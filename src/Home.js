@@ -2,6 +2,7 @@ import React from 'react'
 import Cards from "./Cards"
 import data from "./data"
 import {useState} from 'react';
+import { useCart } from "react-use-cart";
 import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +10,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function  Home() {
 const [search, setSearch] = useState("");
+const {totalItems} =useCart();
   return (
     <>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-0">
@@ -26,7 +28,12 @@ const [search, setSearch] = useState("");
                                         }}
                                         />  
                             </form>
-                          <Link to={'/Cart'}><FontAwesomeIcon className="shopcart" icon={faShoppingCart}></FontAwesomeIcon></Link>   
+                          <Link to={'/Cart'}><FontAwesomeIcon className="shopcart" icon={faShoppingCart}></FontAwesomeIcon>                      
+                            <span className=" translate-middle badge rounded-pill bg-danger">
+                            {totalItems}
+                            </span>
+                          
+                          </Link>   
                     </div>
                 </div>
           </nav>      
