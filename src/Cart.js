@@ -1,7 +1,6 @@
+import { faAlignCenter } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useCart } from "react-use-cart";
-
-
 
 function Cart() {
   const {
@@ -14,47 +13,58 @@ function Cart() {
     removeItem,
     emptyCart,
   } = useCart();
-  if (isEmpty) return <h1 className="text-center">Your Cart is Empty</h1>
+  if (isEmpty) return <h1 className="text-center mt-5">Your Cart is Empty</h1>
 
   return (
     <section className="py-4 container">
       <div className="row justify-content-center">
-        <div className="col-12">
-          <h5>Cart ({totalUniqueItems}) total Items:({totalItems})</h5>
-          <table className="table table-light table-hover m-0">
+        <div className="col-12 mt-4">
+          <h5>My cart ({totalUniqueItems}) Total Items:({totalItems})</h5>
+          <table className="table table-light table-hover mt-4">
             <tbody>
+            <tr className="headings">
+                  <th> </th>
+                  <th>Plant Name</th>
+                  <th>Amount</th>
+                  <th>No of Items</th>
+                  <th>Update Items</th>
+            </tr>
             {items.map((item,index)=>{
-              return(
+              return(  
                 <tr key={index}>
+              
                 <td>
-                  <img src={item.Img} style={{height:"5rem"}}/>
+                  <img src={item.Img} style={{height:"7rem",width:"7rem"}}/>
                   </td>
-                  <td> {item.productName}</td>
-                  <td>{item.price}</td>
+                  <td className="pn"> {item.productName}</td>
+                  <td> Rs :{item.price}</td>
                   <td>Quantity ({item.quantity})</td>
                   <td>
-                    <button className="btn btn-danger ms-2" onClick={() => updateItemQuantity(item.id, item.quantity - 1) }>-</button>
-                    <button className="btn btn-danger ms-2" onClick={() => updateItemQuantity(item.id , item.quantity + 1) }>+</button>
-                    <button className="btn btn-primary ms-2" onClick={() => removeItem(item.id) }>Remove Item</button>
+                    <button className="btn btn-danger btn-sm ms-2 me-2" onClick={() => updateItemQuantity(item.id, item.quantity - 1) }>-</button>
+                    <button className="btn btn-danger btn-sm ms-2 me-2" onClick={() => updateItemQuantity(item.id , item.quantity + 1) }>+</button>
+                    <button className="btn btn-primary btn-sm ms-2" onClick={() => removeItem(item.id) }>Remove Item</button>
                   </td>
               </tr>
+       
               )             
             })}
             </tbody>
           </table>
         </div>
-        <div className="col-auto ms-auto">
-          <h2>Total Price : Rs {cartTotal}</h2>
+        <div className="mt-3">
+          <h4>Total Price : Rs {cartTotal}</h4>
         </div>
-        <div className="col-auto">
-          <button className="btn btn-danger m-2" onClick={()=>emptyCart()}>
+        <div className="gap-2 d-md-flex justify-content-md-end">
+          <button className="btn btn-danger me-1" onClick={()=>emptyCart()}>
             Clear Cart
           </button>
           <button className="btn btn-primary">Place order</button>
 
         </div>
       </div>
+      
     </section>
+    
   )
 }
 

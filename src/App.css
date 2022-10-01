@@ -52,3 +52,19 @@
   justify-content: center;
   align-items: center;
 }
+
+ .buttons { 
+  float: right;
+} 
+
+h4 {
+  text-align: end;
+}
+tr{
+  text-align: center;
+}
+.tabledata{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
