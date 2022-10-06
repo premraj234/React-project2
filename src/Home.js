@@ -13,7 +13,7 @@ const [search, setSearch] = useState("");
 const {totalItems} =useCart();
   return (
     <>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-1">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">Nursery Live Online</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +31,7 @@ const {totalItems} =useCart();
                           <Link to={'/Cart'}><FontAwesomeIcon className="shopcart" icon={faShoppingCart}></FontAwesomeIcon>                      
                             <span className=" translate-middle badge rounded-pill bg-danger">
                             {totalItems}
-                            </span>
-                          
+                            </span>  
                           </Link>   
                     </div>
                 </div>

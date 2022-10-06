@@ -1,6 +1,6 @@
-import { faAlignCenter } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "react-use-cart";
+import axios  from "axios";
 
 function Cart() {
   const {
@@ -15,6 +15,11 @@ function Cart() {
   } = useCart();
   if (isEmpty) return <h1 className="text-center mt-5">Your Cart is Empty</h1>
 
+  async function doPostRequest() {
+    let res = await axios.post('https://0m1957k3j7.execute-api.ap-south-1.amazonaws.com/production/', {
+        name : JSON.stringify(items)
+ }); 
+}
   return (
     <section className="py-4 container">
       <div className="row justify-content-center">
@@ -58,11 +63,9 @@ function Cart() {
           <button className="btn btn-danger me-1" onClick={()=>emptyCart()}>
             Clear Cart
           </button>
-          <button className="btn btn-primary">Place order</button>
-
+          <button className="btn btn-primary" onClick={()=>doPostRequest()}>Place order</button>
         </div>
       </div>
-      
     </section>
     
   )
