@@ -16,7 +16,7 @@ function Cart() {
   if (isEmpty) return <h1 className="text-center mt-5">Your Cart is Empty</h1>
 
   async function doPostRequest() {
-    let res = await axios.post('https://0m1957k3j7.execute-api.ap-south-1.amazonaws.com/production/', {
+    let res = await axios.post('https://dab9jmmb6l.execute-api.ap-south-1.amazonaws.com/production/hello', {
         name : JSON.stringify(items)
  }); 
 }
