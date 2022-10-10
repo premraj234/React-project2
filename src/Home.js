@@ -10,7 +10,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function  Home() {
 const [search, setSearch] = useState("");
-const {totalItems} =useCart();
+const {totalItems} = useCart();
   return (
     <>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -21,6 +21,7 @@ const {totalItems} =useCart();
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                            <Link to={"/Order"}><a className='order'>My Orders</a></Link>
                             <form className="d-flex">
                                 <input className="form-control me-4"  type="search" placeholder="Search" aria-label="Search" 
                                     onChange={(e) => {

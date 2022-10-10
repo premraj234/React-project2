@@ -68,3 +68,9 @@ tr{
   justify-content: center;
   text-align: center;
 }
+
+.order{
+  color: white;
+  font-weight: 600;
+  margin-right: 15px;
+}
