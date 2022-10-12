@@ -1,45 +1,60 @@
-import React from 'react'
-import {useState , useEffect} from "react";
-import Axios from "axios";
+import axios from 'axios'
+import React, {useEffect, useState} from 'react'
+
+
+import { Container, ListGroup } from 'react-bootstrap'
+export default function AdminPannel() {
+  const [data,setData]=useState([])
+  const scatter = [];
+
  
+  useEffect(()=>{
+    async function doGetRequest() {
 
-function Orders() {
-    const [data, setData] = useState([]);
-    const scatter = [""]
-   
+      let res = await axios.get('https://zqai76gevj.execute-api.ap-south-1.amazonaws.com/production/');
+              setData(res.data)
+    }
+    
+    doGetRequest();
+  }); 
+  data.map(item=>{
+    return (
+      scatter.push(JSON.parse(item['Items']))   
+    ) 
+  })
+  let result =[].concat(...scatter);
 
-    useEffect(()=>{
-        async function doGetRequest() {
-           const res =  await Axios.get('https://dab9jmmb6l.execute-api.ap-south-1.amazonaws.com/production/hello')
-                console.log(res.data)
-             }
-             doGetRequest()
-    },[])
-
-        const text = JSON.parse(data)
-        console.log(text)
-        
 
   return (
-   <>
-   <section className='container py-5' >
-    <div className='row justify-content-center'>
-        <div className='col-12 mt-4'>
-            <h5>My Orders</h5>
-            <table className='table table-light table-hover'>
-                <tbody>
-                    <tr className='headings'>
-                        <th></th>
-                        <th>productName</th>
-                        <th>price</th>                       
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-   </section>
-   </>
+    <Container className='mt-5'>
+       <h1>Orders</h1>
+      
+    <table className="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope='col'></th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+        {   result.map((item,index)=>{
+            return(
+                  <tr className='table-active' key={index}>
+                    <td>{item.productName}</td>
+                    <td ><img src={item.Img} style={{height:'5rem', borderRadius:'2px'}} alt={item.productName}/></td>
+                    <td>{item.quantity}</td>
+                    <td>{item.price * item.quantity}</td>
+                  </tr>
+            )
+          })
+        } 
+        </tbody>
+    </table>
+   
+     </Container>
   )
-};
+}
 
-export default Orders;

@@ -16,8 +16,8 @@ function Cart() {
   if (isEmpty) return <h1 className="text-center mt-5">Your Cart is Empty</h1>
 
   async function doPostRequest() {
-    await axios.post('https://dab9jmmb6l.execute-api.ap-south-1.amazonaws.com/production/hello', {
-        name : JSON.stringify(items)
+    await axios.post("https://zqai76gevj.execute-api.ap-south-1.amazonaws.com/production/", {
+        Items : JSON.stringify(items)
  }); 
 }
   return (
@@ -63,7 +63,7 @@ function Cart() {
           <button className="btn btn-danger me-1" onClick={()=>emptyCart()}>
             Clear Cart
           </button>
-          <button className="btn btn-primary" onClick={()=>doPostRequest}>Place order</button>
+          <button className="btn btn-primary" onClick={()=>doPostRequest()}>Place order</button>
         </div>
       </div>
     </section>
