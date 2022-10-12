@@ -24,7 +24,6 @@ export default function AdminPannel() {
   })
   let result =[].concat(...scatter);
 
-
   return (
     <Container className='mt-5'>
        <h1>Orders</h1>
